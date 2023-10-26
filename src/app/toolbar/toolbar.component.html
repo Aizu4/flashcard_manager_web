@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row class="flex">
+    <div class="flex-auto">Flashcard Manager</div>
+    <a [routerLink]="'login'" mat-raised-button color="accent" *ngIf="!authService.isLoggedIn();">
+      Log In
+    </a>
+    <button (click)="logout()" mat-raised-button color="warn" *ngIf="authService.isLoggedIn();">
+      Log Out
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
