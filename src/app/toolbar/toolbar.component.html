@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row class="flex">
-    <div class="flex-auto">Flashcard Manager</div>
+    <div class="flex-auto"><a [routerLink]="'/'">Flashcard Manager</a></div>
     <a [routerLink]="'login'" mat-raised-button color="accent" *ngIf="!authService.isLoggedIn();">
       Log In
     </a>

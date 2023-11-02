@@ -1,0 +1,18 @@
+<mat-card>
+  <mat-list-item>
+    <div class="flex items-center">
+      <div class="flex-auto" *ngIf="!editMode" (click)="goToDeckPage()">{{deck.name}}</div>
+      <input autofocus type="text" class="flex-auto" *ngIf="editMode" (blur)="disableEditMode()" [(ngModel)]="newName">
+      <button mat-icon-button color="accent" (click)="enableEditMode()" *ngIf="!editMode">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button disabled *ngIf="editMode">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="delete()">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </mat-list-item>
+</mat-card>
+

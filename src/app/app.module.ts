@@ -8,7 +8,8 @@ import {FormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
 import {HomeComponent} from './home/home.component';
 import {MatCardModule} from "@angular/material/card";
-import {DeckComponent} from "./home/deck/deck.component";
+import {DeckComponent} from "./deck/deck.component";
+import {MiniDeckComponent} from "./home/mini_deck/mini_deck.component";
 import {MatListModule} from "@angular/material/list";
 import {MatIconModule} from "@angular/material/icon";
 import {ToolbarComponent} from './toolbar/toolbar.component';
@@ -18,10 +19,13 @@ import { LoginComponent } from './login/login.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {MatTableModule} from "@angular/material/table";
 
 const routes: Routes = [
+  {path: '', component: HomeComponent},
   { path: 'login', component: LoginComponent },
-  { path: '**', component: HomeComponent },
+  { path: 'mini_deck/:id', component: DeckComponent },
 ];
 
 @NgModule({
@@ -31,6 +35,7 @@ const routes: Routes = [
     DeckComponent,
     ToolbarComponent,
     LoginComponent,
+    MiniDeckComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +57,9 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     MatFormFieldModule,
     MatInputModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSlideToggleModule,
+    MatTableModule
   ],
   exports: [RouterModule],
   providers: [],
