@@ -1,49 +1,29 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {DeckService} from "../../services/deck.service";
 import {CardService} from "../../services/card.service";
-import {MatTable} from "@angular/material/table";
+
 
 @Component({
   selector: 'app-deck',
   templateUrl: './deck.component.html',
   styleUrls: ['./deck.component.scss']
 })
-export class DeckComponent implements OnInit, OnDestroy {
+export class DeckComponent {
   deck: any;
-  cards: any[] = [];
-  private sub: any;
+  focusedCard: any;
 
-  @ViewChild(MatTable) table: MatTable<any> | undefined;
-
-  displayedColumns: string[] = ['front', 'back', 'notes'];
-  addCardData = {front: '', back: '', notes: ''}
-
-  constructor(private route: ActivatedRoute, private deckService: DeckService, private cardService: CardService) {
-  }
-
-  ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
-      this.deckService.getDeck(params['id']).subscribe({
-        next: deck => {
-          this.deck = deck;
-          this.cards = deck.card_set
-        }, error: () => {
-          alert('error')
-        }
+  constructor(private deckService: DeckService, private route: ActivatedRoute, private cardService: CardService) {
+    this.route.params.subscribe(params => {
+      deckService.getDeck(params['id']).subscribe(deck => {
+        this.deck = deck;
       })
     });
   }
 
-  ngOnDestroy() {
-    this.sub.unsubscribe();
-  }
-
-  createCard() {
-    this.cardService.createCard(this.deck.id, this.addCardData).subscribe( card => {
-      this.cards.push(card)
-      this.addCardData = {front: '', back: '', notes: ''}
-      this.table?.renderRows()
+  newCard() {
+    this.cardService.createCard(this.deck.id, {}).subscribe(card => {
+      this.deck.card_set.push(card)
     })
   }
 }

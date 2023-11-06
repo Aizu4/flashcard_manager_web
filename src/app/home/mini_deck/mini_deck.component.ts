@@ -32,7 +32,7 @@ export class MiniDeckComponent {
 
   disableEditMode() {
     this.editMode = false;
-    this.deckService.patchDeck(this.deck.id, {name: this.newName}).subscribe(deck => {
+    this.deckService.patchDeck(this.deck.id, {name: this.newName} as any).subscribe(deck => {
       this.deck = deck
     })
   }

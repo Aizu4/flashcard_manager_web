@@ -1,0 +1,18 @@
+<div class="flex flex-col">
+  <mat-form-field>
+    <mat-label>Front</mat-label>
+    <input matInput type="text" [(ngModel)]="card.front" (blur)="updateCard()">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Back</mat-label>
+    <input matInput type="text" [(ngModel)]="card.back" (blur)="updateCard()">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Example</mat-label>
+    <input matInput type="text" [(ngModel)]="card.example" (blur)="updateCard()">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Notes</mat-label>
+    <input matInput type="text" [(ngModel)]="card.notes" (blur)="updateCard()">
+  </mat-form-field>
+</div>
