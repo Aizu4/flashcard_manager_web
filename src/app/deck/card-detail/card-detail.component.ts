@@ -16,4 +16,11 @@ export class CardDetailComponent{
       this.card = card;
     })
   }
+
+  deleteCard() {
+    if (!confirm("Are you sure you want to delete this card?")) return;
+    this.cardService.deleteCard(this.card.id).subscribe(() => {
+      this.card = null;
+    })
+  }
 }
