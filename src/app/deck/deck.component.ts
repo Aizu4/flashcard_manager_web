@@ -26,5 +26,13 @@ export class DeckComponent {
       this.deck.card_set.push(card)
     })
   }
+
+  pasteCard() {
+    let text = prompt("Paste card JSON here: ");
+    if (!text) return;
+    this.cardService.createCard(this.deck.id, JSON.parse(text)).subscribe(card => {
+      this.deck.card_set.push(card)
+    })
+  }
 }
 

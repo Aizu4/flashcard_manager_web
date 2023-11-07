@@ -28,7 +28,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 const routes: Routes = [
   {path: '', component: HomeComponent},
   { path: 'login', component: LoginComponent },
-  { path: 'mini_deck/:id', component: DeckComponent },
+  { path: 'deck/:id', component: DeckComponent },
 ];
 
 @NgModule({
@@ -49,7 +49,7 @@ const routes: Routes = [
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
-          return localStorage.getItem("access_token");
+          return localStorage.getItem("token");
         },
         allowedDomains: ["localhost:8000"],
       },

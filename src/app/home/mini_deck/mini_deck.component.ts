@@ -42,6 +42,6 @@ export class MiniDeckComponent {
   }
 
   goToDeckPage() {
-    this.router.navigate(['/mini_deck/' + this.deck.id]).then()
+    this.router.navigate(['/deck/' + this.deck.id]).then()
   }
 }

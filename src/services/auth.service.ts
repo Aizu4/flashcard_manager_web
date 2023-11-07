@@ -12,14 +12,13 @@ export class AuthService {
   static loggedIn: boolean = false;
 
   constructor(private http: HttpClient) {
-    this.ping()
+
   }
 
   login(username: string, password: string): void {
-    this.http.post<any>(URL + 'token/pair', {username, password}).subscribe(
+    this.http.post<any>(URL + 'token/sliding', {username, password}).subscribe(
       (response) => {
-        localStorage.setItem("access_token", response['access']);
-        localStorage.setItem("refresh_token", response['refresh']);
+        localStorage.setItem("token", response['token']);
         AuthService.loggedIn = true;
       }
     )
@@ -28,18 +27,6 @@ export class AuthService {
   logout() {
     localStorage.clear()
     AuthService.loggedIn = false;
-  }
-
-  ping() {
-    return this.http.post(URL + 'token/verify', {token: localStorage.getItem("access_token")}).subscribe({
-        next: () => {
-          AuthService.loggedIn = true;
-        },
-        error: () => {
-          AuthService.loggedIn = false;
-        },
-      }
-    )
   }
 
   isLoggedIn() {

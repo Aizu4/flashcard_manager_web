@@ -23,4 +23,13 @@ export class CardDetailComponent{
       this.card = null;
     })
   }
+
+  copyToClipboard() {
+    let { front, back, example, notes } = this.card
+    navigator.clipboard.writeText(JSON.stringify({front, back, example, notes})).then()
+  }
+
+  humanReadableDate(date: string) {
+    return new Date(date).toLocaleDateString() + " " + new Date(date).toLocaleTimeString()
+  }
 }

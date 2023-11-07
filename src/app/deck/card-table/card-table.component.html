@@ -10,6 +10,7 @@
         [class.row-is-clicked]="isSelected(row)"
         *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+  <div *ngIf="deck.length === 0">This deck is empty</div>
 </div>
 
 

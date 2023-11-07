@@ -6,7 +6,7 @@ import {MatTable} from "@angular/material/table";
   templateUrl: './card-table.component.html',
   styleUrls: ['./card-table.component.scss']
 })
-export class CardTableComponent {
+export class CardTableComponent{
   @Input() deck: any;
 
   @ViewChild(MatTable) table: MatTable<any> | undefined;
@@ -29,5 +29,12 @@ export class CardTableComponent {
       return false;
     }
     return this.selectedRow === row;
+  }
+
+  ngOnChange() {
+    alert("ngOnChanges");
+    if (this.table) {
+      this.table.renderRows();
+    }
   }
 }

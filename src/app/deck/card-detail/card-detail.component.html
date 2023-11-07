@@ -15,8 +15,16 @@
     <mat-label>Notes</mat-label>
     <input matInput type="text" [(ngModel)]="card.notes" (blur)="updateCard()">
   </mat-form-field>
-  <button mat-icon-button color="warn" (click)="deleteCard()">
-    <mat-icon>delete</mat-icon>
-  </button>
+  <div class="flex justify-evenly">
+    <button mat-icon-button color="warn" (click)="deleteCard()">
+      <mat-icon>delete</mat-icon>
+    </button>
+    <button mat-icon-button color="accent" (click)="copyToClipboard()">
+      <mat-icon>content_copy</mat-icon>
+    </button>
+  </div>
+  Created at: {{humanReadableDate(card.created_at)}}<br>
+  Updated at: {{humanReadableDate(card.modified_at)}}<br>
+  ID: {{card.id}}
 </div>
 
