@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {DeckService} from "../../services/deck.service";
 import {CardService} from "../../services/card.service";
 import {CardTableComponent} from "./card-table/card-table.component";
@@ -15,10 +15,14 @@ export class DeckComponent {
   deck: any;
   focusedCard: any;
 
-  constructor(private deckService: DeckService, private route: ActivatedRoute, private cardService: CardService) {
+  constructor(private deckService: DeckService, private route: ActivatedRoute, private cardService: CardService, private router: Router) {
     this.route.params.subscribe(params => {
-      deckService.getDeck(params['id']).subscribe(deck => {
-        this.deck = deck;
+      deckService.getDeck(params['id']).subscribe({
+        next: deck => {
+          this.deck = deck;
+        }, error: () => {
+          this.router.navigate(['/not_found'], {skipLocationChange: true}).then()
+        }
       })
     });
   }

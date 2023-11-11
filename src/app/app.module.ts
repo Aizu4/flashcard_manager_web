@@ -24,11 +24,14 @@ import {MatTableModule} from "@angular/material/table";
 import { CardTableComponent } from './deck/card-table/card-table.component';
 import { CardDetailComponent } from './deck/card-detail/card-detail.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { NotFoundComponent } from './not-found/not-found.component';
+import { DeckSettingsComponent } from './deck/deck-settings/deck-settings.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   { path: 'login', component: LoginComponent },
   { path: 'deck/:id', component: DeckComponent },
+  { path: 'not_found', component: NotFoundComponent },
 ];
 
 @NgModule({
@@ -41,6 +44,8 @@ const routes: Routes = [
     MiniDeckComponent,
     CardTableComponent,
     CardDetailComponent,
+    NotFoundComponent,
+    DeckSettingsComponent,
   ],
   imports: [
     BrowserModule,
