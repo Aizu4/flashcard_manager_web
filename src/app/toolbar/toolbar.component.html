@@ -4,8 +4,9 @@
     <a [routerLink]="'login'" mat-raised-button color="accent" *ngIf="!user">
       Log In
     </a>
-    <div *ngIf="user">
-      You are logged as: <i>{{ user.username }}</i>
+    <div class="flex" *ngIf="user">
+      <div>You are logged as: <i>{{ user.username }}</i></div>
+      <div class="w-5"></div>
       <button (click)="logout()" mat-raised-button color="warn">
         Log Out
       </button>
