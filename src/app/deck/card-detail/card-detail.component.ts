@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {CardService} from "../../../services/card.service";
 
 @Component({
@@ -8,6 +8,8 @@ import {CardService} from "../../../services/card.service";
 })
 export class CardDetailComponent{
   @Input() card: any;
+
+  @Output() cardDeleted = new EventEmitter<any>();
 
   constructor(private cardService: CardService) {
   }
@@ -21,6 +23,7 @@ export class CardDetailComponent{
     if (!confirm("Are you sure you want to delete this card?")) return;
     this.cardService.deleteCard(this.card.id).subscribe(() => {
       this.card = null;
+      this.cardDeleted.emit(this.card);
     })
   }
 

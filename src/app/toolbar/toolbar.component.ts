@@ -7,13 +7,17 @@ import {AuthService} from "../../services/auth.service";
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent {
-  loggedIn: boolean = false;
+  user: any = null;
 
   constructor(public authService: AuthService) {
+    this.authService.me().subscribe(user => {
+      this.user = user;
+    })
   }
 
   logout() {
     this.authService.logout();
+    this.user = null;
     window.location.reload();
   }
 }

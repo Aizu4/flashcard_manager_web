@@ -10,15 +10,19 @@ export class HomeComponent implements OnInit {
   constructor(private deckService: DeckService) {
   }
 
-  decks: any[] | undefined = undefined
+  decks: any[] | undefined | null = undefined
 
   ngOnInit() {
     this.initDecks();
   }
 
   private initDecks() {
-    this.deckService.getDeckList().subscribe(v => {
-      this.decks = v
+    this.deckService.getDeckList().subscribe({
+      next: (v) => {
+        this.decks = v
+      }, error: () => {
+        this.decks = null
+      }
     });
   }
 
@@ -28,6 +32,8 @@ export class HomeComponent implements OnInit {
 
   createDeck() {
     let name = prompt("Put in the name") ?? "unnamed"
-    this.deckService.createDeck(name).subscribe((deck) => {this.decks?.push(deck)});
+    this.deckService.createDeck(name).subscribe((deck) => {
+      this.decks?.push(deck)
+    });
   }
 }

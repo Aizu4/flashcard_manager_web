@@ -30,11 +30,4 @@ export class CardTableComponent{
     }
     return this.selectedRow === row;
   }
-
-  ngOnChange() {
-    alert("ngOnChanges");
-    if (this.table) {
-      this.table.renderRows();
-    }
-  }
 }

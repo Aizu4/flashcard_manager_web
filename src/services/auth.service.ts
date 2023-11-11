@@ -9,8 +9,6 @@ const URL = environment.backendUrl
 })
 export class AuthService {
 
-  static loggedIn: boolean = false;
-
   constructor(private http: HttpClient) {
 
   }
@@ -19,17 +17,15 @@ export class AuthService {
     this.http.post<any>(URL + 'token/sliding', {username, password}).subscribe(
       (response) => {
         localStorage.setItem("token", response['token']);
-        AuthService.loggedIn = true;
       }
     )
   }
 
   logout() {
     localStorage.clear()
-    AuthService.loggedIn = false;
   }
 
-  isLoggedIn() {
-    return AuthService.loggedIn
+  me() {
+    return this.http.get<any>(URL + 'users/me')
   }
 }

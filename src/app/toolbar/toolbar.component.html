@@ -1,11 +1,14 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row class="flex">
     <div class="flex-auto"><a [routerLink]="'/'">Flashcard Manager</a></div>
-    <a [routerLink]="'login'" mat-raised-button color="accent" *ngIf="!authService.isLoggedIn();">
+    <a [routerLink]="'login'" mat-raised-button color="accent" *ngIf="!user">
       Log In
     </a>
-    <button (click)="logout()" mat-raised-button color="warn" *ngIf="authService.isLoggedIn();">
-      Log Out
-    </button>
+    <div *ngIf="user">
+      You are logged as: <i>{{ user.username }}</i>
+      <button (click)="logout()" mat-raised-button color="warn">
+        Log Out
+      </button>
+    </div>
   </mat-toolbar-row>
 </mat-toolbar>
