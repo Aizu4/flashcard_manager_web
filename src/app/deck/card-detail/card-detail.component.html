@@ -1,29 +1,32 @@
 <div class="flex flex-col">
-  <mat-form-field>
-    <mat-label>Front</mat-label>
-    <input matInput type="text" [(ngModel)]="card.front">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Back</mat-label>
-    <input matInput type="text" [(ngModel)]="card.back">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Example</mat-label>
-    <input matInput type="text" [(ngModel)]="card.example">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Notes</mat-label>
-    <input matInput type="text" [(ngModel)]="card.notes">
-  </mat-form-field>
+  <form class="flex flex-col" [formGroup]="cardForm">
+    <mat-form-field>
+      <mat-label>Front</mat-label>
+      <input matInput type="text" formControlName="front">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Back</mat-label>
+      <input matInput type="text" formControlName="back">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Example</mat-label>
+      <input matInput type="text" formControlName="example">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Notes</mat-label>
+      <input matInput type="text" formControlName="notes">
+    </mat-form-field>
+  </form>
+
 
   <div class="flex justify-between">
-    <button mat-icon-button color="warn" (click)="deleteCard()">
+    <button mat-icon-button matTooltip="Delete card" color="warn" (click)="deleteCard()">
       <mat-icon>delete</mat-icon>
     </button>
-    <button mat-icon-button color="accent" (click)="copyToClipboard()">
+    <button mat-icon-button matTooltip="Copy the card as JSON" color="accent" (click)="copyToClipboard()">
       <mat-icon>content_copy</mat-icon>
     </button>
-    <button mat-icon-button color="primary" (click)="updateCard()">
+    <button mat-icon-button matTooltip="Save" color="primary" (click)="submitCard()">
       <mat-icon>save</mat-icon>
     </button>
   </div>

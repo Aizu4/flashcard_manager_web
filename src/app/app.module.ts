@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import { JwtModule } from "@auth0/angular-jwt";
+import {JwtModule} from "@auth0/angular-jwt";
 import {HttpClientModule} from "@angular/common/http";
 
 import {AppComponent} from './app.component';
@@ -15,23 +15,26 @@ import {MatIconModule} from "@angular/material/icon";
 import {ToolbarComponent} from './toolbar/toolbar.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {RouterModule, Routes} from "@angular/router";
-import { LoginComponent } from './login/login.component';
+import {LoginComponent} from './login/login.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatTableModule} from "@angular/material/table";
-import { CardTableComponent } from './deck/card-table/card-table.component';
-import { CardDetailComponent } from './deck/card-detail/card-detail.component';
+import {CardTableComponent} from './deck/card-table/card-table.component';
+import {CardDetailComponent} from './deck/card-detail/card-detail.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { NotFoundComponent } from './not-found/not-found.component';
-import { DeckSettingsComponent } from './deck/deck-settings/deck-settings.component';
+import {NotFoundComponent} from './not-found/not-found.component';
+import {DeckSettingsComponent} from './deck/deck-settings/deck-settings.component';
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  { path: 'login', component: LoginComponent },
-  { path: 'deck/:id', component: DeckComponent },
-  { path: 'not_found', component: NotFoundComponent },
+  {path: 'home', redirectTo: ''},
+  {path: 'login', component: LoginComponent},
+  {path: 'deck/:id', component: DeckComponent},
+  {path: 'not_found', component: NotFoundComponent},
 ];
 
 @NgModule({
@@ -72,6 +75,8 @@ const routes: Routes = [
     MatTableModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    MatAutocompleteModule,
+    MatTooltipModule,
   ],
   exports: [RouterModule],
   providers: [],

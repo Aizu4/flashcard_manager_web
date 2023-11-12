@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-toolbar',
@@ -9,7 +10,7 @@ import {AuthService} from "../../services/auth.service";
 export class ToolbarComponent {
   user: any = null;
 
-  constructor(public authService: AuthService) {
+  constructor(public authService: AuthService, private router: Router) {
     this.authService.me().subscribe(user => {
       this.user = user;
     })
@@ -18,6 +19,7 @@ export class ToolbarComponent {
   logout() {
     this.authService.logout();
     this.user = null;
-    window.location.reload();
+    this.router.navigate(['/'], {onSameUrlNavigation: 'reload'})
+      .then(() => window.location.reload())
   }
 }

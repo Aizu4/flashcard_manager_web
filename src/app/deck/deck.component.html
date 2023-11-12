@@ -1,18 +1,19 @@
 <div class="m-auto max-w-6xl">
   <div class="flex justify-between">
-    <button mat-icon-button color="accent" (click)="newCard()">
+    <button mat-icon-button matTooltip="Add new card" color="accent" (click)="newCard()">
       <mat-icon>add</mat-icon>
     </button>
-    <button mat-icon-button color="accent" (click)="pasteCard()">
+    <button mat-icon-button matTooltip="Paste from JSON" color="accent" (click)="pasteCard()">
       <mat-icon>content_paste</mat-icon>
     </button>
     <div class="grow"></div>
-    <button mat-icon-button color="primary" (click)="focusedCard = null">
+    <button mat-icon-button matTooltip="Settings" color="primary" [disabled]="!focusedCard" (click)="focusedCard = null">
       <mat-icon>settings</mat-icon>
     </button>
   </div>
   <div class="grid grid-cols-2 gap-5">
     <app-card-table [deck]="deck" (cardClicked)="focusedCard = $event"></app-card-table>
-    <app-card-detail [card]="focusedCard" (cardDeleted)="deleteCard($event)" *ngIf="focusedCard"></app-card-detail>
+    <app-card-detail [card]="focusedCard" (cardDeleted)="deleteCard($event)" (cardUpdated)="updateCard($event)" *ngIf="focusedCard"></app-card-detail>
+    <app-deck-settings [deck]="deck" *ngIf="!focusedCard"></app-deck-settings>
   </div>
 </div>

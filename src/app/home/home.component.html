@@ -1,6 +1,5 @@
 <div class="m-auto max-w-3xl">
   <mat-spinner class="mx-auto my-10" *ngIf="decks === undefined"></mat-spinner>
-  <span *ngIf="decks === null">Zaloguj sie kotku!</span>
   <div *ngIf="decks && decks.length === 0">No decks!</div>
   <button *ngIf="decks" mat-icon-button (click)="createDeck();" color="accent"><mat-icon>add</mat-icon></button>
   <mat-list class="decks">

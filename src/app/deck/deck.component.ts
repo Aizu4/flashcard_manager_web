@@ -45,7 +45,14 @@ export class DeckComponent {
 
   deleteCard(card: any) {
     this.focusedCard = null;
-    this.deck.card_set.deleteById(card.id)
+    this.deck.card_set = this.deck.card_set.filter((v: { id: any; }) => v.id !== card.id)
+    this.cardTable.table.renderRows()
+  }
+
+  updateCard(card: any) {
+    let i = this.deck.card_set.findIndex((v: { id: any; }) => v.id === card.id)
+    if (i === -1) return;
+    this.deck.card_set[i] = card;
     this.cardTable.table.renderRows()
   }
 }
