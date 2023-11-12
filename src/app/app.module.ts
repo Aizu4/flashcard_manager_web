@@ -28,6 +28,7 @@ import {NotFoundComponent} from './not-found/not-found.component';
 import {DeckSettingsComponent} from './deck/deck-settings/deck-settings.component';
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatSelectModule} from "@angular/material/select";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -77,6 +78,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     MatAutocompleteModule,
     MatTooltipModule,
+    MatSelectModule,
   ],
   exports: [RouterModule],
   providers: [],
