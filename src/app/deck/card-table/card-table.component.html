@@ -1,5 +1,5 @@
 <div class="m-auto max-w-3xl">
-  <table class="mat-elevation-z8" mat-table [dataSource]="this.deck.card_set">
+  <table class="mat-elevation-z3" mat-table [dataSource]="this.deck.card_set">
     <ng-container *ngFor="let column of displayedColumns" matColumnDef="{{column}}">
       <th mat-header-cell class="capitalize font-bold" *matHeaderCellDef> {{column}} </th>
       <td class="overflow-ellipsis" mat-cell *matCellDef="let element"> {{element[column] || '-'}} </td>
