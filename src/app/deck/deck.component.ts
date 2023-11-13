@@ -40,6 +40,7 @@ export class DeckComponent {
     if (!text) return;
     this.cardService.createCard(this.deck.id, JSON.parse(text)).subscribe(card => {
       this.deck.card_set.push(card)
+      this.cardTable.table.renderRows()
     })
   }
 
