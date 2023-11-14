@@ -9,6 +9,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 })
 export class CardDetailComponent implements OnInit, OnChanges {
   @Input() card: any;
+  @Input() deck: any;
   @Output() cardUpdated = new EventEmitter<any>();
   @Output() cardDeleted = new EventEmitter<any>();
 

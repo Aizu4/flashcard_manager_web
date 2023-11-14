@@ -13,7 +13,6 @@ export class CardTableComponent{
 
   @Output() cardClicked = new EventEmitter<any>();
 
-  displayedColumns: string[] = ['front', 'back'];
   selectedRow: any;
 
   constructor() {

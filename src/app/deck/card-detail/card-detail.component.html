@@ -2,11 +2,11 @@
   <form class="flex flex-col" [formGroup]="cardForm">
     <mat-form-field>
       <mat-label>Front</mat-label>
-      <input matInput type="text" formControlName="front">
+      <input matInput type="text" formControlName="front" [lang]="deck.front_language_code">
     </mat-form-field>
     <mat-form-field>
       <mat-label>Back</mat-label>
-      <input matInput type="text" formControlName="back">
+      <input matInput type="text" formControlName="back" [lang]="deck.back_language_code">
     </mat-form-field>
     <mat-form-field>
       <mat-label>Example</mat-label>

@@ -9,14 +9,18 @@
     </mat-form-field>
     <mat-form-field>
       <mat-label>Front Language</mat-label>
-      <mat-select formControlName="front_language">
-        <mat-option *ngFor="let language of languageOptions" [value]="language">{{language}}</mat-option>
+      <mat-select formControlName="front_language_code">
+          <mat-option *ngFor="let language of languageService.getAllLanguages()"
+                      [value]="language.code">{{language.englishName}} ({{language.nativeName}})
+          </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Back Language</mat-label>
-      <mat-select formControlName="back_language">
-        <mat-option *ngFor="let language of languageOptions" [value]="language">{{language}}</mat-option>
+      <mat-select formControlName="back_language_code">
+          <mat-option *ngFor="let language of languageService.getAllLanguages()"
+                      [value]="language.code">{{language.englishName}} ({{language.nativeName}})
+          </mat-option>
       </mat-select>
     </mat-form-field>
   </form>

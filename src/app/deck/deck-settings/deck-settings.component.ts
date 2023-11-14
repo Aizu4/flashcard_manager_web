@@ -1,6 +1,7 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {DeckService} from "../../../services/deck.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {LanguageService} from "../../../services/language.service";
 
 @Component({
   selector: 'app-deck-settings',
@@ -9,14 +10,13 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 })
 export class DeckSettingsComponent implements OnInit, OnChanges {
   @Input() deck: any;
-  languageOptions: any[] = [
-    'English', 'Polish', 'Spanish', 'French', 'German', 'Italian', 'Portuguese', 'Russian', 'Japanese', 'Korean', 'Chinese', 'Other'
-  ];
 
   // @ts-ignore
   deckForm: FormGroup;
 
-  constructor(private deckService: DeckService, private formBuilder: FormBuilder) {
+  languages: any[] | undefined;
+
+  constructor(private deckService: DeckService, private formBuilder: FormBuilder, public languageService: LanguageService) {
   }
 
   ngOnInit() {
@@ -30,8 +30,8 @@ export class DeckSettingsComponent implements OnInit, OnChanges {
   initDeckForm() {
     this.deckForm = this.formBuilder.group({
       name: this.deck.name,
-      front_language: this.deck.front_language,
-      back_language: this.deck.back_language,
+      front_language_code: this.deck.front_language_code,
+      back_language_code: this.deck.back_language_code,
     });
   }
 

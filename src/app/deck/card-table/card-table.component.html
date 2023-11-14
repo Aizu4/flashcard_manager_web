@@ -1,14 +1,21 @@
 <div class="m-auto max-w-3xl">
   <table class="mat-elevation-z3" mat-table [dataSource]="this.deck.card_set">
-    <ng-container *ngFor="let column of displayedColumns" matColumnDef="{{column}}">
-      <th mat-header-cell class="capitalize font-bold" *matHeaderCellDef> {{column}} </th>
-      <td class="overflow-ellipsis" mat-cell *matCellDef="let element"> {{element[column] || '-'}} </td>
+    <ng-container matColumnDef="front">
+      <th mat-header-cell class="font-bold" *matHeaderCellDef> Front</th>
+      <td class="overflow-ellipsis" mat-cell *matCellDef="let element"
+          [lang]="deck.front_language_code"> {{element['front'] || '-'}} </td>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <ng-container matColumnDef="back">
+      <th mat-header-cell class="font-bold" *matHeaderCellDef> Back</th>
+      <td class="overflow-ellipsis" mat-cell *matCellDef="let element"
+          [lang]="deck.back_language_code"> {{element['back'] || '-'}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['front', 'back']"></tr>
     <tr mat-row (click)="selectRow(row)"
         [class.row-is-clicked]="isSelected(row)"
-        *matRowDef="let row; columns: displayedColumns;"></tr>
+        *matRowDef="let row; columns: ['front', 'back'];"></tr>
   </table>
 </div>
 
