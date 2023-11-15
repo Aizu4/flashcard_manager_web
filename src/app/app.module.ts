@@ -29,6 +29,7 @@ import {DeckSettingsComponent} from './deck/deck-settings/deck-settings.componen
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatSelectModule} from "@angular/material/select";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -79,6 +80,7 @@ const routes: Routes = [
     MatAutocompleteModule,
     MatTooltipModule,
     MatSelectModule,
+    MatCheckboxModule,
   ],
   exports: [RouterModule],
   providers: [],

@@ -48,8 +48,11 @@ export class CardDetailComponent implements OnInit, OnChanges {
   }
 
   copyToClipboard() {
-    let {front, back, example, notes} = this.card
-    navigator.clipboard.writeText(JSON.stringify({front, back, example, notes})).then()
+    let {front, back, example_front, example_back, notes} = this.card
+    if (this.deck.example_sentences)
+      navigator.clipboard.writeText(JSON.stringify({front, back, example_front, example_back, notes})).then()
+    else
+      navigator.clipboard.writeText(JSON.stringify({front, back, notes})).then()
   }
 
   humanReadableDate(date: string) {

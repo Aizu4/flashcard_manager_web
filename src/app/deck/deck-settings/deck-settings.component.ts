@@ -14,8 +14,6 @@ export class DeckSettingsComponent implements OnInit, OnChanges {
   // @ts-ignore
   deckForm: FormGroup;
 
-  languages: any[] | undefined;
-
   constructor(private deckService: DeckService, private formBuilder: FormBuilder, public languageService: LanguageService) {
   }
 
@@ -28,14 +26,14 @@ export class DeckSettingsComponent implements OnInit, OnChanges {
   }
 
   initDeckForm() {
-    this.deckForm = this.formBuilder.group({
-      name: this.deck.name,
-      front_language_code: this.deck.front_language_code,
-      back_language_code: this.deck.back_language_code,
-    });
+    this.deckForm = this.formBuilder.group(this.deck);
   }
 
   updateDeck() {
-    this.deckService.patchDeck(this.deck.id, this.deckForm.getRawValue()).subscribe()
+    this.deckService.patchDeck(this.deck.id, this.deckForm.getRawValue()).subscribe(
+      () => {
+        window.location.reload();
+      }
+    )
   }
 }

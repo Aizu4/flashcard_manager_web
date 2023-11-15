@@ -1,13 +1,17 @@
 <div class="m-auto max-w-3xl">
   <table class="mat-elevation-z3" mat-table [dataSource]="this.deck.card_set">
     <ng-container matColumnDef="front">
-      <th mat-header-cell class="font-bold" *matHeaderCellDef>Front ({{languageName(deck.front_language_code)}})</th>
+      <th mat-header-cell class="font-bold" *matHeaderCellDef>
+        Front<span *ngIf="deck.front_language_code"> ({{languageName(deck.front_language_code)}})</span>
+      </th>
       <td class="overflow-ellipsis" mat-cell *matCellDef="let element"
           [lang]="deck.front_language_code"> {{element['front'] || '-'}} </td>
     </ng-container>
 
     <ng-container matColumnDef="back">
-      <th mat-header-cell class="font-bold" *matHeaderCellDef>Back ({{languageName(deck.back_language_code)}})</th>
+      <th mat-header-cell class="font-bold" *matHeaderCellDef>
+        Back<span *ngIf="deck.back_language_code"> ({{languageName(deck.back_language_code)}})</span>
+      </th>
       <td class="overflow-ellipsis" mat-cell *matCellDef="let element"
           [lang]="deck.back_language_code"> {{element['back'] || '-'}} </td>
     </ng-container>
