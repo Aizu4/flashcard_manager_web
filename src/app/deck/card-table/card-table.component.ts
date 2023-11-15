@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {MatTable} from "@angular/material/table";
+import ISO6391 from 'iso-639-1'
 
 @Component({
   selector: 'app-card-table',
@@ -28,5 +29,9 @@ export class CardTableComponent{
       return false;
     }
     return this.selectedRow === row;
+  }
+
+  languageName(code: string) {
+    return ISO6391.getName(code)
   }
 }
