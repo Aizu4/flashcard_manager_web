@@ -10,22 +10,45 @@
     <mat-form-field>
       <mat-label>Front Language</mat-label>
       <mat-select formControlName="front_language_code">
-          <mat-option *ngFor="let language of languageService.getAllLanguages()"
-                      [value]="language.code">{{language.englishName}} ({{language.nativeName}})
-          </mat-option>
+        <mat-option *ngFor="let language of languageService.getAllLanguages()"
+                    [value]="language.code">{{language.englishName}} ({{language.nativeName}})
+        </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Back Language</mat-label>
       <mat-select formControlName="back_language_code">
-          <mat-option *ngFor="let language of languageService.getAllLanguages()"
-                      [value]="language.code">{{language.englishName}} ({{language.nativeName}})
-          </mat-option>
+        <mat-option *ngFor="let language of languageService.getAllLanguages()"
+                    [value]="language.code">{{language.englishName}} ({{language.nativeName}})
+        </mat-option>
       </mat-select>
     </mat-form-field>
-      <mat-checkbox formControlName="example_sentences">Show example sentences</mat-checkbox>
+    <mat-checkbox formControlName="example_sentences">Show example sentences</mat-checkbox>
   </form>
   <button mat-icon-button color="primary" (click)="updateDeck()" matTooltip="Save deck">
     <mat-icon>save</mat-icon>
   </button>
+  <h2>Tags</h2>
+  <div class="h-4"></div>
+  <div class="flex">
+    <mat-form-field class="flex-grow">
+      <input matInput type="text" [(ngModel)]="newTag" (keyup.enter)="addTag()" placeholder="Add tag">
+    </mat-form-field>
+    <button mat-icon-button color="primary" (click)="addTag()" matTooltip="Add tag">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <div *ngIf="deck.tags.length === 0">This deck has no tags</div>
+  <mat-list role="list">
+    <mat-list-item role="listitem" *ngFor="let tag of deck.tags">
+      <div class="flex align-baseline">
+        <button mat-icon-button color="warn" (click)="removeTag(tag)" matTooltip="Remove tag">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <mat-icon [style.color]="tag.color">label</mat-icon>
+        <div class="w-4"></div>
+        <div>{{tag.text}}</div>
+      </div>
+    </mat-list-item>
+  </mat-list>
 </div>
