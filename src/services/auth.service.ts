@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../environments/environment.development";
+import {Subscription} from "rxjs";
 
 const URL = environment.backendUrl
 
@@ -13,8 +14,8 @@ export class AuthService {
 
   }
 
-  login(username: string, password: string): void {
-    this.http.post<any>(URL + 'token/sliding', {username, password}).subscribe(
+  login(username: string, password: string): Subscription {
+    return this.http.post<any>(URL + 'token/sliding', {username, password}).subscribe(
       (response) => {
         localStorage.setItem("token", response['token']);
       }

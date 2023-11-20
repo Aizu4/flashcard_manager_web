@@ -16,7 +16,8 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    this.auth.login(this.email, this.password)
-    this.router.navigate(['/']).then()
+    this.auth.login(this.email, this.password).add(() => {
+      this.router.navigate(['/']);
+    });
   }
 }
