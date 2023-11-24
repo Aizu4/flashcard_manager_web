@@ -30,6 +30,13 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatSelectModule} from "@angular/material/select";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import {
+  MAT_COLOR_FORMATS,
+  NGX_MAT_COLOR_FORMATS,
+  NgxMatColorPickerModule
+} from "@angular-material-components/color-picker";
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {MatChipsModule} from "@angular/material/chips";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -81,9 +88,12 @@ const routes: Routes = [
     MatTooltipModule,
     MatSelectModule,
     MatCheckboxModule,
+    NgxMatColorPickerModule,
+    MatButtonToggleModule,
+    MatChipsModule,
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [{ provide: MAT_COLOR_FORMATS, useValue: NGX_MAT_COLOR_FORMATS }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

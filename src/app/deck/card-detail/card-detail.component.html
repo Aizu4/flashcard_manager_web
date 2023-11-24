@@ -1,42 +1,47 @@
-<div class="flex flex-col">
-  <form class="flex flex-col" [formGroup]="cardForm">
-    <mat-form-field>
-      <mat-label>Front</mat-label>
-      <input matInput type="text" formControlName="front" [lang]="deck.front_language_code">
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Back</mat-label>
-      <input matInput type="text" formControlName="back" [lang]="deck.back_language_code">
-    </mat-form-field>
-    <mat-form-field *ngIf="deck.example_sentences">
-      <mat-label>Example Front</mat-label>
-      <input matInput type="text" formControlName="example_front">
-    </mat-form-field>
-    <mat-form-field *ngIf="deck.example_sentences">
-      <mat-label>Example Back</mat-label>
-      <input matInput type="text" formControlName="example_back">
-    </mat-form-field>
-    <mat-form-field>
+<mat-card>
+  <mat-card-content>
+    <div class="flex flex-col">
+      <form class="flex flex-col" [formGroup]="cardForm">
+        <mat-form-field>
+          <mat-label>Front</mat-label>
+          <input matInput type="text" formControlName="front" [lang]="deck.front_language_code">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Back</mat-label>
+          <input matInput type="text" formControlName="back" [lang]="deck.back_language_code">
+        </mat-form-field>
+        <mat-form-field *ngIf="deck.example_sentences">
+          <mat-label>Example Front</mat-label>
+          <input matInput type="text" formControlName="example_front">
+        </mat-form-field>
+        <mat-form-field *ngIf="deck.example_sentences">
+          <mat-label>Example Back</mat-label>
+          <input matInput type="text" formControlName="example_back">
+        </mat-form-field>
+        <mat-form-field>
 
-      <mat-label>Notes</mat-label>
-      <input matInput type="text" formControlName="notes">
-    </mat-form-field>
-  </form>
+          <mat-label>Notes</mat-label>
+          <input matInput type="text" formControlName="notes">
+        </mat-form-field>
+      </form>
 
 
-  <div class="flex justify-between">
-    <button mat-icon-button matTooltip="Delete card" color="warn" (click)="deleteCard()">
-      <mat-icon>delete</mat-icon>
-    </button>
-    <button mat-icon-button matTooltip="Copy the card as JSON" color="accent" (click)="copyToClipboard()">
-      <mat-icon>content_copy</mat-icon>
-    </button>
-    <button mat-icon-button matTooltip="Save card" color="primary" (click)="submitCard()">
-      <mat-icon>save</mat-icon>
-    </button>
-  </div>
-  Created at: {{humanReadableDate(card.created_at)}}<br>
-  Updated at: {{humanReadableDate(card.modified_at)}}<br>
-  ID: {{card.id}}
-</div>
+      <div class="flex justify-between">
+        <button mat-icon-button matTooltip="Delete card" color="warn" (click)="deleteCard()">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Copy the card as JSON" color="accent" (click)="copyToClipboard()">
+          <mat-icon>content_copy</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Save card" color="primary" (click)="submitCard()">
+          <mat-icon>save</mat-icon>
+        </button>
+      </div>
 
+
+      Created at: {{humanReadableDate(card.created_at)}}<br>
+      Updated at: {{humanReadableDate(card.modified_at)}}<br>
+      ID: {{card.id}}
+    </div>
+  </mat-card-content>
+</mat-card>

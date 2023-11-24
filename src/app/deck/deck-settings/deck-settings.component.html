@@ -34,14 +34,16 @@
     <mat-form-field class="flex-grow">
       <input matInput type="text" [(ngModel)]="newTag" (keyup.enter)="addTag()" placeholder="Add tag">
     </mat-form-field>
+
     <button mat-icon-button color="primary" (click)="addTag()" matTooltip="Add tag">
       <mat-icon>add</mat-icon>
     </button>
   </div>
+
   <div *ngIf="deck.tags.length === 0">This deck has no tags</div>
   <mat-list role="list">
     <mat-list-item role="listitem" *ngFor="let tag of deck.tags">
-      <div class="flex align-baseline">
+      <div class="flex items-center">
         <button mat-icon-button color="warn" (click)="removeTag(tag)" matTooltip="Remove tag">
           <mat-icon>delete</mat-icon>
         </button>
@@ -52,3 +54,4 @@
     </mat-list-item>
   </mat-list>
 </div>
+

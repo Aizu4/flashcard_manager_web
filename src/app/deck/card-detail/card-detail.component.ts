@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {CardService} from "../../../services/card.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {COMMA, ENTER} from "@angular/cdk/keycodes";
 
 @Component({
   selector: 'app-card-detail',
@@ -13,6 +14,8 @@ export class CardDetailComponent implements OnInit, OnChanges {
 
   @Output() cardUpdated = new EventEmitter<any>();
   @Output() cardDeleted = new EventEmitter<any>();
+
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
 
   // @ts-ignore
   cardForm: FormGroup;
