@@ -14,8 +14,12 @@
   </div>
   <div class="grid grid-cols-2 gap-5">
     <app-card-table [deck]="deck" (cardClicked)="focusedCard = $event"></app-card-table>
-    <app-card-detail [deck]="deck" [card]="focusedCard" (cardDeleted)="deleteCard($event)"
-                     (cardUpdated)="updateCard($event)" *ngIf="focusedCard"></app-card-detail>
-    <app-deck-settings [deck]="deck" *ngIf="!focusedCard"></app-deck-settings>
+    <mat-card>
+      <mat-card-content>
+        <app-card-detail [deck]="deck" [card]="focusedCard" (cardDeleted)="deleteCard($event)"
+                         (cardUpdated)="updateCard($event)" *ngIf="focusedCard"></app-card-detail>
+        <app-deck-settings [deck]="deck" *ngIf="!focusedCard"></app-deck-settings>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>
