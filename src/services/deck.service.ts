@@ -30,4 +30,8 @@ export class DeckService {
   deleteDeck(id: string) {
     return this.http.delete(URL + id);
   }
+
+  exportDeckToCSV(id: string, settings: any) {
+    return this.http.post(URL + id + '/export', settings, {responseType: 'text'});
+  }
 }
