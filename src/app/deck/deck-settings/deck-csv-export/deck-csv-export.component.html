@@ -8,12 +8,14 @@
         <mat-option *ngFor="let value of separatorValues" [value]="value[1]">{{value[0]}}</mat-option>
       </mat-select>
     </mat-form-field>
+    <div class="w-2"></div>
     <mat-form-field class="flex-grow">
       <mat-label>Quote Character</mat-label>
       <mat-select formControlName="quotechar">
         <mat-option *ngFor="let value of quotecharValues" [value]="value[1]">{{value[0]}}</mat-option>
       </mat-select>
     </mat-form-field>
+    <div class="w-2"></div>
   </form>
   <button mat-icon-button color="primary" (click)="downloadDeck()" matTooltip="Download CSV">
     <mat-icon>download</mat-icon>
