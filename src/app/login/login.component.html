@@ -1,6 +1,6 @@
-<mat-card>
+<mat-card class="mx-auto my-8 w-4/12">
   <mat-card-content>
-    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+    <form class="flex flex-col" #loginForm="ngForm" (ngSubmit)="onSubmit()">
       <mat-form-field>
         <input matInput placeholder="Email" [(ngModel)]="email" name="username" required>
         <mat-error>
