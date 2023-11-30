@@ -1,5 +1,5 @@
 <div class="flex flex-col">
-  <h2>General Settings</h2>
+  <h1>General Settings</h1>
 
   <form class="flex flex-col" [formGroup]="deckForm" *ngIf="deckForm">
     <mat-form-field>
@@ -26,5 +26,6 @@
   <button mat-icon-button color="primary" (click)="updateDeck()" matTooltip="Save deck">
     <mat-icon>save</mat-icon>
   </button>
+  <hr>
   <app-deck-csv-export [deck]="deck"></app-deck-csv-export>
 </div>

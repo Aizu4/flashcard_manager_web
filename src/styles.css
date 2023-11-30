@@ -6,19 +6,25 @@
 
 h1 {
   @apply text-4xl;
-  @apply py-4;
+  @apply pb-4;
 }
 
 h2 {
   @apply text-3xl;
-  @apply py-4;
+  @apply pb-4;
 }
 
 h3 {
   @apply text-2xl;
-  @apply py-4;
+  @apply pb-4;
 }
 
 body {
   @apply pb-8;
+}
+
+hr {
+  @apply mt-4;
+  @apply mb-2;
+  @apply accent-gray-500;
 }
