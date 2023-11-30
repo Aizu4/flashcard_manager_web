@@ -31,6 +31,7 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatSelectModule} from "@angular/material/select";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {DeckCsvExportComponent} from './deck/deck-settings/deck-csv-export/deck-csv-export.component';
+import { CardImageComponent } from './deck/card-detail/card-image/card-image.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -53,6 +54,7 @@ const routes: Routes = [
     NotFoundComponent,
     DeckSettingsComponent,
     DeckCsvExportComponent,
+    CardImageComponent,
   ],
   imports: [
     BrowserModule,

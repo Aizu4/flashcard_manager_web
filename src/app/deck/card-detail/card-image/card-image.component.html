@@ -1,0 +1,7 @@
+<h2>Card Image</h2>
+<input *ngIf="src === null" #imageInput type="file" accept="image/*" (change)="processImage(imageInput)">
+<mat-spinner *ngIf="src === undefined"></mat-spinner>
+<img *ngIf="src" [src]="src" alt="">
+<button mat-icon-button color="warn" *ngIf="src" (click)="deleteImage()" matTooltip="Delete Image">
+  <mat-icon>delete</mat-icon>
+</button>

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 import {CardService} from "../../../services/card.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
 
@@ -24,7 +24,7 @@ export class CardDetailComponent implements OnInit, OnChanges {
     this.initCardForm()
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges() {
     this.initCardForm()
   }
 
