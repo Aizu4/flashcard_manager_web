@@ -21,6 +21,7 @@ h3 {
 
 body {
   @apply pb-8;
+  background: #fcfcfc;
 }
 
 hr {

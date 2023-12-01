@@ -14,6 +14,7 @@ export class DeckComponent {
   @ViewChild(CardTableComponent) cardTable: any;
   deck: any;
   focusedCard: any;
+  search: string = '';
 
   constructor(private deckService: DeckService, private route: ActivatedRoute, private cardService: CardService, private router: Router) {
     this.route.params.subscribe(params => {
@@ -47,6 +48,7 @@ export class DeckComponent {
   deleteCard(card: any) {
     this.focusedCard = null;
     this.deck.card_set = this.deck.card_set.filter((v: { id: any; }) => v.id !== card.id)
+    this.cardTable.dataSource.data = this.deck.card_set;
     this.cardTable.table.renderRows()
   }
 
@@ -54,6 +56,19 @@ export class DeckComponent {
     let i = this.deck.card_set.findIndex((v: { id: any; }) => v.id === card.id)
     if (i === -1) return;
     this.deck.card_set[i] = card;
+    this.cardTable.dataSource.data = this.deck.card_set;
+    this.cardTable.table.renderRows()
+  }
+
+  filter() {
+    this.cardTable.dataSource.filter = this.search.trim().toLowerCase();
+    this.cardTable.table.renderRows()
+  }
+
+  clearFilter(event: any) {
+    this.search = '';
+    this.cardTable.dataSource.filter = '';
+    (event.target as HTMLInputElement).blur();
     this.cardTable.table.renderRows()
   }
 }
