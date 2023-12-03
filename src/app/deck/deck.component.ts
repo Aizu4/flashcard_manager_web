@@ -31,6 +31,7 @@ export class DeckComponent {
   newCard() {
     this.cardService.createCard(this.deck.id, {}).subscribe(card => {
       this.deck.card_set.push(card)
+      this.cardTable.dataSource.data = this.deck.card_set;
       this.focusedCard = card;
       this.cardTable.table.renderRows()
     })
@@ -41,6 +42,7 @@ export class DeckComponent {
     if (!text) return;
     this.cardService.createCard(this.deck.id, JSON.parse(text)).subscribe(card => {
       this.deck.card_set.push(card)
+      this.cardTable.dataSource.data = this.deck.card_set;
       this.cardTable.table.renderRows()
     })
   }
