@@ -32,6 +32,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {DeckCsvExportComponent} from './deck/deck-settings/deck-csv-export/deck-csv-export.component';
 import { CardImageComponent } from './deck/card-detail/card-image/card-image.component';
+import {MatSortModule} from "@angular/material/sort";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -56,36 +57,37 @@ const routes: Routes = [
     DeckCsvExportComponent,
     CardImageComponent,
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: () => {
-          return localStorage.getItem("token");
-        },
-        allowedDomains: ["localhost:8000"],
-      },
-    }),
-    MatButtonModule,
-    MatCardModule,
-    MatListModule,
-    MatIconModule,
-    MatToolbarModule,
-    RouterModule.forRoot(routes),
-    MatFormFieldModule,
-    MatInputModule,
-    MatProgressSpinnerModule,
-    MatSlideToggleModule,
-    MatTableModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    MatAutocompleteModule,
-    MatTooltipModule,
-    MatSelectModule,
-    MatCheckboxModule,
-  ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpClientModule,
+        JwtModule.forRoot({
+            config: {
+                tokenGetter: () => {
+                    return localStorage.getItem("token");
+                },
+                allowedDomains: ["localhost:8000"],
+            },
+        }),
+        MatButtonModule,
+        MatCardModule,
+        MatListModule,
+        MatIconModule,
+        MatToolbarModule,
+        RouterModule.forRoot(routes),
+        MatFormFieldModule,
+        MatInputModule,
+        MatProgressSpinnerModule,
+        MatSlideToggleModule,
+        MatTableModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        MatAutocompleteModule,
+        MatTooltipModule,
+        MatSelectModule,
+        MatCheckboxModule,
+        MatSortModule,
+    ],
   exports: [RouterModule],
   providers: [],
   bootstrap: [AppComponent]

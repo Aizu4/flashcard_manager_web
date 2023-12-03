@@ -1,11 +1,21 @@
 <div class="m-auto max-w-6xl">
-  <div class="flex justify-between">
+  <div class="flex justify-between mt-4">
     <button mat-icon-button matTooltip="Add new card" color="accent" (click)="newCard()">
       <mat-icon>add</mat-icon>
     </button>
     <button mat-icon-button matTooltip="Paste from JSON" color="accent" (click)="pasteCard()">
       <mat-icon>content_paste</mat-icon>
     </button>
+    <div class="w-4"></div>
+
+    <mat-form-field class="w-64">
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="filter()" [(ngModel)]="search">
+      <button matSuffix mat-icon-button aria-label="Clear" *ngIf="search" (click)="clearFilter($event)">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
     <div class="grow"></div>
     <button mat-icon-button matTooltip="Settings" color="primary" [disabled]="!focusedCard"
             (click)="focusedCard = null">
@@ -13,12 +23,12 @@
     </button>
   </div>
   <div class="grid grid-cols-2 gap-5">
-    <app-card-table [deck]="deck" (cardClicked)="focusedCard = $event"></app-card-table>
-    <mat-card>
+    <app-card-table [deck]="deck" *ngIf="deck" (cardClicked)="focusedCard = $event"></app-card-table>
+    <mat-card class="h-min">
       <mat-card-content>
         <app-card-detail [deck]="deck" [card]="focusedCard" (cardDeleted)="deleteCard($event)"
                          (cardUpdated)="updateCard($event)" *ngIf="focusedCard"></app-card-detail>
-        <app-deck-settings [deck]="deck" *ngIf="!focusedCard"></app-deck-settings>
+        <app-deck-settings [deck]="deck" *ngIf="deck && !focusedCard"></app-deck-settings>
       </mat-card-content>
     </mat-card>
   </div>
