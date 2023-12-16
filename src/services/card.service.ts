@@ -30,4 +30,8 @@ export class CardService {
   deleteCard(id: string) {
     return this.http.delete(URL + id);
   }
+
+  generateExamples(id: string, body: any) {
+    return this.http.post<any>(URL + id + '/generate_sentences', body);
+  }
 }
