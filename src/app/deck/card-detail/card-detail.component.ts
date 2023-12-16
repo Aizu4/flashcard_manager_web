@@ -17,6 +17,8 @@ export class CardDetailComponent implements OnInit, OnChanges {
   // @ts-ignore
   cardForm: FormGroup;
 
+  generatingExample: boolean = false;
+
   constructor(private cardService: CardService, private formBuilder: FormBuilder) {
   }
 
@@ -57,5 +59,15 @@ export class CardDetailComponent implements OnInit, OnChanges {
 
   humanReadableDate(date: string) {
     return new Date(date).toLocaleDateString() + " " + new Date(date).toLocaleTimeString()
+  }
+
+  generateExample() {
+    this.generatingExample = true;
+    this.cardService.generateExamples(this.card.id, this.cardForm.getRawValue()).subscribe(card => {
+      this.card = card;
+      this.cardForm.patchValue({example_front: card.example_front, example_back: card.example_back})
+      this.cardUpdated.emit(this.card);
+      this.generatingExample = false;
+    })
   }
 }
