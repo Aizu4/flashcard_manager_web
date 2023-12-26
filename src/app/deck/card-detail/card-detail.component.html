@@ -32,6 +32,11 @@
     <button mat-icon-button matTooltip="Copy the card as JSON" color="accent" (click)="copyToClipboard()">
       <mat-icon>content_copy</mat-icon>
     </button>
+    <button mat-icon-button *ngIf="!generatingTranslations" matTooltip="Generate the translations using AI" color="accent"
+            (click)="generateTranslations()">
+      <mat-icon>translate</mat-icon>
+    </button>
+    <mat-spinner *ngIf="generatingTranslations" color="accent" diameter="24"></mat-spinner>
     <button mat-icon-button *ngIf="!generatingExample" matTooltip="Generate the example using AI" color="accent"
             (click)="generateExample()">
       <mat-icon>whatshot</mat-icon>
