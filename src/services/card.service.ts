@@ -31,6 +31,10 @@ export class CardService {
     return this.http.delete(URL + id);
   }
 
+  generateTranslations(id: string, body: any) {
+    return this.http.post<any>(URL + id + '/generate_translations', body);
+  }
+
   generateExamples(id: string, body: any) {
     return this.http.post<any>(URL + id + '/generate_sentences', body);
   }
