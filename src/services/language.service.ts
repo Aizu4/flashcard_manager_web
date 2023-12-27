@@ -14,7 +14,6 @@ export class LanguageService {
   static allLanguages: Language[];
 
   constructor() {
-
   }
 
   getAllLanguages(): Language[] {
