@@ -8,10 +8,18 @@
     <mat-form-field>
       <mat-label>Back</mat-label>
       <input matInput type="text" formControlName="back" [lang]="deck.back_language_code">
+      <button matSuffix mat-icon-button color="primary" matTooltip="Translate using GPT" (click)="generateTranslations()"
+              [disabled]="generatingTranslations">
+        <mat-icon>translate</mat-icon>
+      </button>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Example Front</mat-label>
       <input matInput type="text" formControlName="example_front">
+      <button matSuffix mat-icon-button color="primary" matTooltip="Generate using GPT" (click)="generateExample()"
+              [disabled]="generatingExample">
+        <mat-icon>whatshot</mat-icon>
+      </button>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Example Back</mat-label>
@@ -32,11 +40,6 @@
     <button mat-icon-button matTooltip="Copy the card as JSON" color="accent" (click)="copyToClipboard()">
       <mat-icon>content_copy</mat-icon>
     </button>
-    <button mat-icon-button *ngIf="!generatingExample" matTooltip="Generate the example using AI" color="accent"
-            (click)="generateExample()">
-      <mat-icon>whatshot</mat-icon>
-    </button>
-    <mat-spinner *ngIf="generatingExample" color="accent" diameter="24"></mat-spinner>
     <button mat-icon-button matTooltip="Save card" color="primary" (click)="submitCard()">
       <mat-icon>save</mat-icon>
     </button>

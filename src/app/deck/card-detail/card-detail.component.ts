@@ -18,6 +18,7 @@ export class CardDetailComponent implements OnInit, OnChanges {
   cardForm: FormGroup;
 
   generatingExample: boolean = false;
+  generatingTranslations: boolean = false;
 
   constructor(private cardService: CardService, private formBuilder: FormBuilder) {
   }
@@ -68,6 +69,16 @@ export class CardDetailComponent implements OnInit, OnChanges {
       this.cardForm.patchValue({example_front: card.example_front, example_back: card.example_back})
       this.cardUpdated.emit(this.card);
       this.generatingExample = false;
+    })
+  }
+
+  generateTranslations() {
+    this.generatingTranslations = true;
+    this.cardService.generateTranslations(this.card.id, this.cardForm.getRawValue()).subscribe(card => {
+      this.card = card;
+      this.cardForm.patchValue({back: card.back})
+      this.cardUpdated.emit(this.card);
+      this.generatingTranslations = false;
     })
   }
 }
