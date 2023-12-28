@@ -10,8 +10,13 @@ const URL = environment.backendUrl + 'cards/'
 export class CardService {
   constructor(private http: HttpClient) {
   }
+
   createCard(deck_id: string, body: any) {
     return this.http.post<any>(URL, body, {params: {deck_id: deck_id}});
+  }
+
+  createCardsFromText(deck_id: string, text: string) {
+    return this.http.post<any>(URL + 'bulk', {content: text}, {params: {deck_id: deck_id}});
   }
 
   patchCard(id: string, body: any) {

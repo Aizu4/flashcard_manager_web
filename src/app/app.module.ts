@@ -33,6 +33,8 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {DeckCsvExportComponent} from './deck/deck-settings/deck-csv-export/deck-csv-export.component';
 import { CardImageComponent } from './deck/card-detail/card-image/card-image.component';
 import {MatSortModule} from "@angular/material/sort";
+import { BulkAddDialogComponent } from './deck/bulk-add-dialog/bulk-add-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -56,6 +58,7 @@ const routes: Routes = [
     DeckSettingsComponent,
     DeckCsvExportComponent,
     CardImageComponent,
+    BulkAddDialogComponent,
   ],
     imports: [
         BrowserModule,
@@ -87,6 +90,7 @@ const routes: Routes = [
         MatSelectModule,
         MatCheckboxModule,
         MatSortModule,
+        MatDialogModule,
     ],
   exports: [RouterModule],
   providers: [],
