@@ -3,6 +3,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {DeckService} from "../../services/deck.service";
 import {CardService} from "../../services/card.service";
 import {CardTableComponent} from "./card-table/card-table.component";
+import {MatDialog} from "@angular/material/dialog";
+import {BulkAddDialogComponent} from "./bulk-add-dialog/bulk-add-dialog.component";
 
 
 @Component({
@@ -15,8 +17,9 @@ export class DeckComponent {
   deck: any;
   focusedCard: any;
   search: string = '';
+  bulkText: string = '';
 
-  constructor(private deckService: DeckService, private route: ActivatedRoute, private cardService: CardService, private router: Router) {
+  constructor(private deckService: DeckService, private route: ActivatedRoute, private cardService: CardService, private router: Router, public dialog: MatDialog) {
     this.route.params.subscribe(params => {
       deckService.getDeck(params['id']).subscribe({
         next: deck => {
@@ -72,6 +75,18 @@ export class DeckComponent {
     this.cardTable.dataSource.filter = '';
     (event.target as HTMLInputElement).blur();
     this.cardTable.table.renderRows()
+  }
+
+  openBulkInputDialog() {
+    const dialogRef = this.dialog.open(BulkAddDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.cardService.createCardsFromText(this.deck.id, result).subscribe(cards => {
+        this.deck.card_set = this.deck.card_set.concat(cards)
+        this.cardTable.dataSource.data = this.deck.card_set;
+        this.cardTable.table.renderRows()
+      }
+    )});
   }
 }
 
