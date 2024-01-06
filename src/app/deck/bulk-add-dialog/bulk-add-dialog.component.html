@@ -3,11 +3,11 @@
 </h1>
 <div mat-dialog-content>
   <mat-form-field>
-    <textarea matInput [(ngModel)]="text"></textarea>
+    <textarea matInput [(ngModel)]="text" placeholder="front word > back word"></textarea>
   </mat-form-field>
 </div>
 <div mat-dialog-actions class="flex">
   <button mat-button class="grow w-auto" color="warn" (click)="dialogRef.close()">Cancel</button>
-  <button mat-button class="grow w-auto" color="accent" [mat-dialog-close]="text">Add</button>
+  <button mat-button class="grow w-auto" color="accent" [mat-dialog-close]="text" [disabled]="!text">Add</button>
 </div>
 
