@@ -31,6 +31,10 @@ export class DeckService {
     return this.http.delete(URL + id);
   }
 
+  deleteEmptyCards(id: string) {
+    return this.http.delete(URL + id + '/empty_cards');
+  }
+
   exportDeckToCSV(id: string, settings: any) {
     return this.http.post(URL + id + '/export', settings, {responseType: 'text'});
   }

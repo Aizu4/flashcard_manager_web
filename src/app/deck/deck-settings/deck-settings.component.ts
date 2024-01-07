@@ -36,4 +36,12 @@ export class DeckSettingsComponent implements OnInit, OnChanges {
       }
     )
   }
+
+  deleteEmptyCards() {
+    if (!confirm('Are you sure you want to delete all empty cards? ' +
+      '(if the card has not empty example sentences it will still be deleted)')) return;
+    this.deckService.deleteEmptyCards(this.deck.id).subscribe(() => {
+      window.location.reload();
+    })
+  }
 }

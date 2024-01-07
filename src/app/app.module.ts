@@ -35,6 +35,7 @@ import { CardImageComponent } from './deck/card-detail/card-image/card-image.com
 import {MatSortModule} from "@angular/material/sort";
 import { BulkAddDialogComponent } from './deck/bulk-add-dialog/bulk-add-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatTabsModule} from "@angular/material/tabs";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -91,6 +92,7 @@ const routes: Routes = [
         MatCheckboxModule,
         MatSortModule,
         MatDialogModule,
+        MatTabsModule,
     ],
   exports: [RouterModule],
   providers: [],
