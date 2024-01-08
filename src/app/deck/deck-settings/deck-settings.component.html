@@ -1,35 +1,49 @@
 <div class="flex flex-col">
-  <h1>General Settings</h1>
-
-  <form class="flex flex-col" [formGroup]="deckForm" *ngIf="deckForm">
-    <mat-form-field>
-      <mat-label>Name</mat-label>
-      <input matInput type="text" formControlName="name" required>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Front Language</mat-label>
-      <mat-select formControlName="front_language_code">
-        <mat-option *ngFor="let language of languageService.getAllLanguages()"
-                    [value]="language.code">{{language.englishName}} ({{language.nativeName}})
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Back Language</mat-label>
-      <mat-select formControlName="back_language_code">
-        <mat-option *ngFor="let language of languageService.getAllLanguages()"
-                    [value]="language.code">{{language.englishName}} ({{language.nativeName}})
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </form>
-  <button mat-icon-button color="primary" (click)="updateDeck()" matTooltip="Save deck">
-    <mat-icon>save</mat-icon>
-  </button>
-  <hr>
-  <app-deck-csv-export [deck]="deck"></app-deck-csv-export>
-  <hr>
-  <button mat-button color="warn" (click)="deleteEmptyCards()">
-    Delete empty cards
-  </button>
+  <mat-tab-group animationDuration="0ms">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span class="mat-tab-label">General</span>
+      </ng-template>
+      <h2>General Settings</h2>
+      <form class="flex flex-col" [formGroup]="deckForm" *ngIf="deckForm">
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput type="text" formControlName="name" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Front Language</mat-label>
+          <mat-select formControlName="front_language_code">
+            <mat-option *ngFor="let language of languageService.getAllLanguages()"
+                        [value]="language.code">{{language.englishName}} ({{language.nativeName}})
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Back Language</mat-label>
+          <mat-select formControlName="back_language_code">
+            <mat-option *ngFor="let language of languageService.getAllLanguages()"
+                        [value]="language.code">{{language.englishName}} ({{language.nativeName}})
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+      <div>
+        <button mat-icon-button color="primary" (click)="updateDeck()" matTooltip="Save deck">
+          <mat-icon>save</mat-icon>
+        </button>
+      </div>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span class="mat-tab-label">Tags</span>
+      </ng-template>
+      <h2>Tags</h2>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span class="mat-tab-label">Export</span>
+      </ng-template>
+      <app-deck-csv-export [deck]="deck"></app-deck-csv-export>
+    </mat-tab>
+  </mat-tab-group>
 </div>

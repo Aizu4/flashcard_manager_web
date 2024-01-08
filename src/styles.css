@@ -6,21 +6,21 @@
 
 h1 {
   @apply text-4xl;
-  @apply pb-4;
+  @apply py-4;
 }
 
 h2 {
   @apply text-3xl;
-  @apply pb-4;
+  @apply py-4;
 }
 
 h3 {
   @apply text-2xl;
-  @apply pb-4;
+  @apply py-4;
 }
 
 body {
-  @apply pb-8;
+  @apply py-8;
   background: #fcfcfc;
 }
 
@@ -28,4 +28,8 @@ hr {
   @apply mt-4;
   @apply mb-2;
   @apply accent-gray-500;
+}
+
+mat-tab-group {
+  @apply text-6xl;
 }

@@ -38,16 +38,27 @@ export class DeckCsvExportComponent {
     });
   }
 
+  downloadData(data: any, type: string, filename: string) {
+    let blob = new Blob([data], {type: type});
+    let url = window.URL.createObjectURL(blob);
+    let a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
+    window.URL.revokeObjectURL(url);
+    a.remove();
+  }
+
   downloadDeck() {
     this.deckService.exportDeckToCSV(this.deck.id, this.csvSettingsForm.getRawValue()).subscribe((data) => {
-        let blob = new Blob([data], {type: 'text/csv'});
-        let url = window.URL.createObjectURL(blob);
-        let a = document.createElement('a');
-        a.href = url;
-        a.download = this.deck.name + '.csv';
-        a.click();
-        window.URL.revokeObjectURL(url);
-        a.remove();
+        this.downloadData(data, 'text/csv', `${this.deck.name}_${Date.now()}.csv`);
+      }
+    )
+  }
+
+  downloadImages() {
+    this.deckService.exportDeckImages(this.deck.id).subscribe((data) => {
+        this.downloadData(data, 'application/zip', `${this.deck.name}_${Date.now()}.zip`);
       }
     )
   }

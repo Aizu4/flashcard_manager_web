@@ -38,4 +38,8 @@ export class DeckService {
   exportDeckToCSV(id: string, settings: any) {
     return this.http.post(URL + id + '/export', settings, {responseType: 'text'});
   }
+
+  exportDeckImages(id: string) {
+    return this.http.get(URL + id + '/export_images', {responseType: 'blob'});
+  }
 }
