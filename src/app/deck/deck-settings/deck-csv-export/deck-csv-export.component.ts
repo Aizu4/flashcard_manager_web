@@ -34,6 +34,7 @@ export class DeckCsvExportComponent {
     this.csvSettingsForm = this.formBuilder.group({
       separator: [';'],
       quotechar: ['"'],
+      with_images: [true],
     });
   }
 
