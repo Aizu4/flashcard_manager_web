@@ -36,6 +36,11 @@ import {MatSortModule} from "@angular/material/sort";
 import { BulkAddDialogComponent } from './deck/bulk-add-dialog/bulk-add-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatTabsModule} from "@angular/material/tabs";
+import { DeckTagsViewComponent } from './deck/deck-settings/deck-tags-view/deck-tags-view.component';
+import {MatLegacyChipsModule} from "@angular/material/legacy-chips";
+import {MatLineModule} from "@angular/material/core";
+import { DeckTagListElementComponent } from './deck/deck-settings/deck-tags-view/deck-tag-list-element/deck-tag-list-element.component';
+import {A11yModule} from "@angular/cdk/a11y";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -60,6 +65,8 @@ const routes: Routes = [
     DeckCsvExportComponent,
     CardImageComponent,
     BulkAddDialogComponent,
+    DeckTagsViewComponent,
+    DeckTagListElementComponent,
   ],
     imports: [
         BrowserModule,
@@ -93,6 +100,9 @@ const routes: Routes = [
         MatSortModule,
         MatDialogModule,
         MatTabsModule,
+        MatLegacyChipsModule,
+        MatLineModule,
+        A11yModule,
     ],
   exports: [RouterModule],
   providers: [],

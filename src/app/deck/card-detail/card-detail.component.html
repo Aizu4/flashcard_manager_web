@@ -10,7 +10,8 @@
       <input matInput type="text" formControlName="back" [lang]="deck.back_language_code">
       <button matSuffix mat-icon-button color="primary" matTooltip="Translate using GPT" (click)="generateTranslations()"
               [disabled]="generatingTranslations">
-        <mat-icon>translate</mat-icon>
+        <mat-icon *ngIf="!generatingTranslations">translate</mat-icon>
+        <mat-spinner *ngIf="generatingTranslations" diameter="24" mode="indeterminate"></mat-spinner>
       </button>
     </mat-form-field>
     <mat-form-field>
@@ -18,7 +19,8 @@
       <input matInput type="text" formControlName="example_front">
       <button matSuffix mat-icon-button color="primary" matTooltip="Generate using GPT" (click)="generateExample()"
               [disabled]="generatingExample">
-        <mat-icon>whatshot</mat-icon>
+        <mat-icon *ngIf="!generatingExample">whatshot</mat-icon>
+        <mat-spinner *ngIf="generatingExample" diameter="24" mode="indeterminate"></mat-spinner>
       </button>
     </mat-form-field>
     <mat-form-field>

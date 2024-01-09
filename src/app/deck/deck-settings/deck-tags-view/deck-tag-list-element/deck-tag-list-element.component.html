@@ -1,0 +1,18 @@
+<mat-card>
+  <mat-list-item>
+    <div class="flex items-center">
+      <mat-icon class="mx-4">bookmark</mat-icon>
+      <div class="flex-auto" *ngIf="!editMode">{{tag.name}}</div>
+      <input [cdkTrapFocusAutoCapture]="editMode" [cdkTrapFocus]="editMode" type="text" class="flex-auto" *ngIf="editMode" (blur)="patchTag()" [(ngModel)]="newTagName">
+      <button mat-icon-button color="accent" (click)="enableEditMode()" *ngIf="!editMode">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button disabled *ngIf="editMode">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="removeTag()">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </mat-list-item>
+</mat-card>

@@ -15,12 +15,13 @@
       </mat-select>
     </mat-form-field>
     <mat-checkbox formControlName="with_images" class="ml-2">Include image filenames</mat-checkbox>
-    <div class="flex justify-between h-11 mt-4">
-      <button mat-raised-button color="primary" (click)="downloadDeck()" matTooltip="Download CSV">
+    <div class="flex justify-evenly h-11 mt-4">
+      <button mat-raised-button class="grow" color="primary" (click)="downloadDeck()">
         Download CSV
       </button>
-      <button mat-raised-button color="primary" (click)="downloadImages()" matTooltip="Download images in ZIP archive">
-        Download ZIP with images
+      <div class="w-4"></div>
+      <button mat-raised-button class="grow" color="primary" (click)="downloadImages()">
+        Download images
       </button>
     </div>
   </form>
