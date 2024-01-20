@@ -35,6 +35,7 @@ export class DeckCsvExportComponent {
       separator: [';'],
       quotechar: ['"'],
       with_images: [true],
+      with_tags: [true],
     });
   }
 

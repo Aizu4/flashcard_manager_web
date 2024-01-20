@@ -14,6 +14,7 @@
         <mat-option *ngFor="let value of quotecharValues" [value]="value[1]">{{value[0]}}</mat-option>
       </mat-select>
     </mat-form-field>
+    <mat-checkbox formControlName="with_tags" class="ml-2">Include tags</mat-checkbox>
     <mat-checkbox formControlName="with_images" class="ml-2">Include image filenames</mat-checkbox>
     <div class="flex justify-evenly h-11 mt-4">
       <button mat-raised-button class="grow" color="primary" (click)="downloadDeck()">
