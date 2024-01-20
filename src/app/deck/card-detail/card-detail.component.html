@@ -46,6 +46,7 @@
       <mat-icon>save</mat-icon>
     </button>
   </div>
+  <app-card-tags *ngIf="deck.tag_set.length > 0" [card]="card" [deck]="deck"></app-card-tags>
   <hr>
   <app-card-image [card]="card"></app-card-image>
   <hr>

@@ -20,10 +20,8 @@ export class DeckTagsViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.tagsService.getDeckTags(this.deck.id).subscribe(tags => {
-      this.tags = tags;
-      this.sortTags();
-    })
+    this.tags = this.deck.tag_set;
+    this.sortTags();
   }
 
   initTagForm() {

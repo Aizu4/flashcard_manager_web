@@ -41,6 +41,8 @@ import {MatLegacyChipsModule} from "@angular/material/legacy-chips";
 import {MatLineModule} from "@angular/material/core";
 import { DeckTagListElementComponent } from './deck/deck-settings/deck-tags-view/deck-tag-list-element/deck-tag-list-element.component';
 import {A11yModule} from "@angular/cdk/a11y";
+import { CardTagsComponent } from './deck/card-detail/card-tags/card-tags.component';
+import {MatChipsModule} from "@angular/material/chips";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -67,6 +69,7 @@ const routes: Routes = [
     BulkAddDialogComponent,
     DeckTagsViewComponent,
     DeckTagListElementComponent,
+    CardTagsComponent,
   ],
     imports: [
         BrowserModule,
@@ -103,6 +106,7 @@ const routes: Routes = [
         MatLegacyChipsModule,
         MatLineModule,
         A11yModule,
+        MatChipsModule,
     ],
   exports: [RouterModule],
   providers: [],

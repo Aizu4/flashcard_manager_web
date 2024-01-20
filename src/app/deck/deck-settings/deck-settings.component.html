@@ -26,12 +26,23 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
+        <h3>
+          Access Settings
+        </h3>
+        <mat-slide-toggle formControlName="public" color="primary">
+          The deck is currently set to <b>{{deck.public ? 'public' : 'private'}}</b>
+          <br>
+          <span *ngIf="deckForm.get('public')?.value != deck.public">
+            (will be changed to <b>{{deckForm.get('public')?.value ? 'public' : 'private'}}</b> on save)
+          </span>
+        </mat-slide-toggle>
       </form>
       <div>
         <button mat-icon-button color="primary" (click)="updateDeck()" matTooltip="Save deck">
           <mat-icon>save</mat-icon>
         </button>
       </div>
+      <div>This deck code is <b>{{deck.slug}}</b></div>
     </mat-tab>
     <mat-tab>
       <ng-template mat-tab-label>

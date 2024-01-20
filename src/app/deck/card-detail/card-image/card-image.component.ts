@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit} from '@angular/core';
+import {Component, Input, OnChanges} from '@angular/core';
 import {ImageService} from "../../../../services/image.service";
 
 class ImageSnippet {
@@ -11,16 +11,12 @@ class ImageSnippet {
   templateUrl: './card-image.component.html',
   styleUrls: ['./card-image.component.scss']
 })
-export class CardImageComponent implements OnInit, OnChanges {
+export class CardImageComponent implements OnChanges {
   @Input() card: any;
 
   src: string | null | undefined;
 
   constructor(private imageService: ImageService) {
-  }
-
-  ngOnInit() {
-    this.getImage();
   }
 
   ngOnChanges() {
