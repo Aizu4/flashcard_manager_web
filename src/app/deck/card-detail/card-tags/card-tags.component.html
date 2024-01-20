@@ -1,9 +1,8 @@
 <hr>
 <h2>Tags</h2>
 <mat-chip-list>
-  <mat-chip-option matChipAvatar class="mx-0.5" *ngFor="let tag of tags"
+  <mat-chip-option class="m-0.5" *ngFor="let tag of tags"
                    (selectionChange)="updateTag($event, tag)"
-                   [selected]="isSelected(tag)">
-    {{tag.name}}
+                   [selected]="isSelected(tag)">{{tag.name}}
   </mat-chip-option>
 </mat-chip-list>
