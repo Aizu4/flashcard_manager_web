@@ -43,12 +43,14 @@ import { DeckTagListElementComponent } from './deck/deck-settings/deck-tags-view
 import {A11yModule} from "@angular/cdk/a11y";
 import { CardTagsComponent } from './deck/card-detail/card-tags/card-tags.component';
 import {MatChipsModule} from "@angular/material/chips";
+import { DeckViewComponent } from './deck-view/deck-view.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'home', redirectTo: ''},
   {path: 'login', component: LoginComponent},
   {path: 'deck/:id', component: DeckComponent},
+  {path: 'view/:slug', component: DeckViewComponent},
   {path: 'not_found', component: NotFoundComponent},
 ];
 
@@ -70,6 +72,7 @@ const routes: Routes = [
     DeckTagsViewComponent,
     DeckTagListElementComponent,
     CardTagsComponent,
+    DeckViewComponent,
   ],
     imports: [
         BrowserModule,

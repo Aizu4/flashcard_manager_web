@@ -1,0 +1,63 @@
+<div class="m-auto max-w-6xl flex flex-col items-stretch">
+  <mat-form-field>
+    <mat-label>Search</mat-label>
+    <input matInput (keyup)="filter()" [(ngModel)]="search">
+    <button matSuffix mat-icon-button aria-label="Clear" *ngIf="search" (click)="clearFilter($event)">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <table class="mat-elevation-z4" mat-table matSort [dataSource]="dataSource">
+    <ng-container matColumnDef="front">
+      <th mat-header-cell mat-sort-header class="font-bold" *matHeaderCellDef>
+        Front<span *ngIf="deck.front_language_code"> ({{languageName(deck.front_language_code)}})</span>
+      </th>
+      <td class="overflow-ellipsis" mat-cell *matCellDef="let element"
+          [lang]="deck.front_language_code"> {{element['front'] || '-'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="back">
+      <th mat-header-cell mat-sort-header class="font-bold" *matHeaderCellDef>
+        Back<span *ngIf="deck.back_language_code">({{languageName(deck.back_language_code)}})</span>
+      </th>
+      <td class="overflow-ellipsis" mat-cell *matCellDef="let element"
+          [lang]="deck.back_language_code"> {{element['back'] || '-'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="example_front">
+      <th mat-header-cell mat-sort-header class="font-bold" *matHeaderCellDef>
+        Example<span *ngIf="deck.front_language_code">({{languageName(deck.front_language_code)}})</span>
+      </th>
+      <td class="overflow-ellipsis" mat-cell *matCellDef="let element"
+          [lang]="deck.front_language_code"> {{element['example_front'] || '-'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="example_back">
+      <th mat-header-cell mat-sort-header class="font-bold" *matHeaderCellDef>
+        Example<span *ngIf="deck.back_language_code">({{languageName(deck.back_language_code)}})</span>
+      </th>
+      <td class="overflow-ellipsis" mat-cell *matCellDef="let element"
+          [lang]="deck.back_language_code"> {{element['example_back'] || '-'}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="tags">
+      <th mat-header-cell mat-sort-header class="font-bold" *matHeaderCellDef>
+        Tags
+      </th>
+      <td class="overflow-ellipsis" mat-cell *matCellDef="let element">
+        {{ formattedTags(element['tags']) || '-'}}
+      </td>
+    </ng-container>
+
+    <!--  <ng-container matColumnDef="notes">-->
+    <!--    <th mat-header-cell mat-sort-header class="font-bold" *matHeaderCellDef>-->
+    <!--      Back<span *ngIf="deck.back_language_code"></span>-->
+    <!--    </th>-->
+    <!--    <td class="overflow-ellipsis" mat-cell *matCellDef="let element"-->
+    <!--        [lang]="deck.back_language_code"> {{element['notes'] || '-'}} </td>-->
+    <!--  </ng-container>-->
+
+    <tr mat-header-row *matHeaderRowDef="['front', 'back', 'example_front', 'example_back', 'tags']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['front', 'back', 'example_front', 'example_back', 'tags'];"></tr>
+  </table>
+</div>

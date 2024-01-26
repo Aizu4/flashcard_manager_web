@@ -46,4 +46,8 @@ export class DeckService {
   exportDeckImages(id: string) {
     return this.http.get(URL + id + '/export_images', {responseType: 'blob'});
   }
+
+  getDeckBySlug(slug: string) {
+    return this.http.get<any>(URL + 's/' + slug)
+  }
 }
