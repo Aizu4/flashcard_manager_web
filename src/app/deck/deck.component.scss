@@ -1,0 +1,9 @@
+.deck-grid {
+  @apply grid-cols-1;
+}
+
+@media (min-width: 768px) {
+  .deck-grid {
+    @apply grid-cols-2;
+  }
+}

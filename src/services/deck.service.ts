@@ -27,6 +27,10 @@ export class DeckService {
     return this.http.patch<any>(URL + id, body);
   }
 
+  updateDeckSlug(id: string, slug: string) {
+    return this.http.patch<any>(URL + id + '/s', {}, {params: {slug: slug}});
+  }
+
   deleteDeck(id: string) {
     return this.http.delete(URL + id);
   }

@@ -25,7 +25,7 @@
       <mat-icon>settings</mat-icon>
     </button>
   </div>
-  <div class="grid grid-cols-2 gap-5">
+  <div class="grid deck-grid gap-5 mx-5">
     <app-card-table [deck]="deck" *ngIf="deck" (cardClicked)="focusedCard = $event"></app-card-table>
     <mat-card class="h-min">
       <mat-card-content>

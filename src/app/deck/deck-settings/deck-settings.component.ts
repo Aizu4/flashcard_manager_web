@@ -44,4 +44,28 @@ export class DeckSettingsComponent implements OnInit, OnChanges {
       window.location.reload();
     })
   }
+
+  updateSlug() {
+    let newSlug = prompt("Enter new deck code");
+    if (!newSlug) return;
+
+    this.deckService.updateDeckSlug(this.deck.id, newSlug).subscribe({
+      next: () => {
+        window.location.reload();
+      },
+      error: () => {
+        alert("A deck with this code already exists.");
+      }
+    })
+  }
+
+  changeVisibility() {
+    if (!confirm(`Are you sure you want to make the deck ${
+      this.deck.public ? 'private' : 'public'
+    }?`)) return;
+
+    this.deckService.patchDeck(this.deck.id, {public: !this.deck.public}).subscribe(() => {
+      window.location.reload();
+    })
+  }
 }
