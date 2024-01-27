@@ -45,17 +45,9 @@
         Tags
       </th>
       <td class="overflow-ellipsis" mat-cell *matCellDef="let element">
-        {{ formattedTags(element['tags']) || '-'}}
+        <mat-chip class="m-0.5" color="primary" *ngFor="let tag of element['tags']">{{tag.name}}</mat-chip>
       </td>
     </ng-container>
-
-    <!--  <ng-container matColumnDef="notes">-->
-    <!--    <th mat-header-cell mat-sort-header class="font-bold" *matHeaderCellDef>-->
-    <!--      Back<span *ngIf="deck.back_language_code"></span>-->
-    <!--    </th>-->
-    <!--    <td class="overflow-ellipsis" mat-cell *matCellDef="let element"-->
-    <!--        [lang]="deck.back_language_code"> {{element['notes'] || '-'}} </td>-->
-    <!--  </ng-container>-->
 
     <tr mat-header-row *matHeaderRowDef="['front', 'back', 'example_front', 'example_back', 'tags']"></tr>
     <tr mat-row *matRowDef="let row; columns: ['front', 'back', 'example_front', 'example_back', 'tags'];"></tr>

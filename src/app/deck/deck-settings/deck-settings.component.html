@@ -43,6 +43,9 @@
       <div *ngIf="deck.public" class="flex items-center">
         <div>This deck code is <b>{{deck.slug}}</b></div>
         <div class="w-2"></div>
+        <button mat-icon-button color="primary" (click)="copySlug()" matTooltip="Copy the deck code">
+          <mat-icon>content_copy</mat-icon>
+        </button>
         <button mat-icon-button color="accent" (click)="updateSlug()" matTooltip="Change the deck code">
           <mat-icon>edit</mat-icon>
         </button>

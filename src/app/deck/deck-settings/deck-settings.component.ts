@@ -68,4 +68,8 @@ export class DeckSettingsComponent implements OnInit, OnChanges {
       window.location.reload();
     })
   }
+
+  copySlug() {
+    navigator.clipboard.writeText(this.deck.slug).then()
+  }
 }
