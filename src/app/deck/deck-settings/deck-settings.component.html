@@ -64,5 +64,11 @@
       </ng-template>
       <app-deck-csv-export [deck]="deck"></app-deck-csv-export>
     </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span class="mat-tab-label">Import</span>
+      </ng-template>
+      <app-deck-csv-import [deck]="deck"></app-deck-csv-import>
+    </mat-tab>
   </mat-tab-group>
 </div>

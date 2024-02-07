@@ -39,6 +39,15 @@ export class DeckService {
     return this.http.delete(URL + id + '/empty_cards');
   }
 
+  importDeckFromCSV(id: string, settings: any, file: any) {
+    let data = {
+      separator: settings.separator,
+      quotechar: settings.quotechar,
+      file: file
+    }
+    return this.http.post(URL + id + '/import', data);
+  }
+
   exportDeckToCSV(id: string, settings: any) {
     return this.http.post(URL + id + '/export', settings, {responseType: 'text'});
   }

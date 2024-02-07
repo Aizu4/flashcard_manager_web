@@ -1,0 +1,20 @@
+<h2>Import Cards</h2>
+
+<div class="flex flex-col">
+  <form class="flex flex-grow flex-col" [formGroup]="csvSettingsForm" *ngIf="csvSettingsForm">
+    <mat-form-field class="flex-grow">
+      <mat-label>Separator</mat-label>
+      <mat-select formControlName="separator">
+        <mat-option *ngFor="let value of separatorValues" [value]="value[1]">{{value[0]}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="flex-grow">
+      <mat-label>Quote Character</mat-label>
+      <mat-select formControlName="quotechar">
+        <mat-option *ngFor="let value of quotecharValues" [value]="value[1]">{{value[0]}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+  <input #csvInput type="file" accept="text/csv" (change)="processCSV(csvInput)">
+  <button [disabled]="src === null" mat-raised-button color="primary" (click)="importCards()">Import</button>
+</div>
